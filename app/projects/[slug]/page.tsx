@@ -1,15 +1,19 @@
+// app/projects/[slug]/page.tsx
 import Link from "next/link";
-type Props = { params: { slug: string } };
 
-export default function ProjectDetail({ params }: Props) {
-  const { slug } = params;
+export default async function ProjectDetail({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-  // Basit örnek içerik — sonra gerçek verilerle dolduracağız
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
       <Link href="/projects" className="text-sm text-white/70 hover:underline">
         ← Projelere dön
       </Link>
+
       <h1 className="mt-4 text-4xl font-semibold">
         Proje Detayı: {slug.replaceAll("-", " ").toUpperCase()}
       </h1>
@@ -25,7 +29,7 @@ export default function ProjectDetail({ params }: Props) {
           <ul className="mt-2 list-disc pl-6 text-gray-300">
             <li>Gerilim/Kapasite/Yoğunluk</li>
             <li>AI-BMS Algoritmaları (SoC/SoH)</li>
-            <li>Termal yönetim & güvenlik</li>
+            <li>Termal yönetim &amp; güvenlik</li>
           </ul>
         </div>
         <div className="rounded-2xl border border-white/10 p-5">
@@ -33,7 +37,7 @@ export default function ProjectDetail({ params }: Props) {
           <ul className="mt-2 list-disc pl-6 text-gray-300">
             <li>VTOL / UGV / Radar arayüzleri</li>
             <li>CAN / Ethernet / SDR</li>
-            <li>Sertifikasyon & testler</li>
+            <li>Sertifikasyon &amp; testler</li>
           </ul>
         </div>
       </section>

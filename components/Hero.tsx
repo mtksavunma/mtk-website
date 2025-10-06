@@ -1,13 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden radarsweep">
       {/* Arka plan GÖRSELİ */}
       <Image
-        src="/hero/mtk-hero.png" // public/hero/mtk-hero.webp
+        src="/hero/mtk-hero.png" // public/hero/mtk-hero.png
         alt="Enerji depolama, batarya ve savunma sistemleri arka planı"
         fill
         sizes="100vw"
@@ -35,18 +36,18 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/projects"
               className="rounded-xl px-6 py-3 bg-white text-black font-medium"
             >
               Projelerimizi Keşfedin
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="rounded-xl px-6 py-3 border border-white/30 text-white font-medium hover:bg-white/10"
             >
               Bize Ulaşın
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

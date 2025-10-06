@@ -1,5 +1,6 @@
 import Badge from "@/components/Badge";
 import Section from "@/components/Section";
+import Link from "next/link";
 
 export const metadata = {
   title: "Radar Zekâ Modülü – Geliştirme Aşamasında",
@@ -10,9 +11,9 @@ export const metadata = {
 export default function RadarPage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
-      <a href="/projects" className="text-sm text-white/70 hover:underline">
+      <Link href="/projects" className="text-sm text-white/70 hover:underline">
         ← Projelere dön
-      </a>
+      </Link>
 
       <h1 className="mt-4 text-4xl font-semibold">
         Radar Zekâ Modülü (Geliştirme Aşamasında)
@@ -43,12 +44,12 @@ export default function RadarPage() {
       </Section>
 
       <Section>
-        <a
+        <Link
           href="/contact"
           className="rounded-xl px-5 py-3 border border-white text-white text-sm font-medium"
         >
           İş Birliği / Pilot Çalışma İçin İletişime Geç
-        </a>
+        </Link>
       </Section>
     </main>
   );

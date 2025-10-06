@@ -1,3 +1,4 @@
+import Link from "next/link";
 type Props = { params: { slug: string } };
 
 export default function ProjectDetail({ params }: Props) {
@@ -6,9 +7,9 @@ export default function ProjectDetail({ params }: Props) {
   // Basit örnek içerik — sonra gerçek verilerle dolduracağız
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
-      <a href="/projects" className="text-sm text-white/70 hover:underline">
+      <Link href="/projects" className="text-sm text-white/70 hover:underline">
         ← Projelere dön
-      </a>
+      </Link>
       <h1 className="mt-4 text-4xl font-semibold">
         Proje Detayı: {slug.replaceAll("-", " ").toUpperCase()}
       </h1>

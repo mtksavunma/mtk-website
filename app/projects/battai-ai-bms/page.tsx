@@ -1,6 +1,7 @@
 import Badge from "@/components/Badge";
 import Section from "@/components/Section";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title: "BATTAI – AI Destekli Batarya Yönetim Sistemi",
@@ -11,9 +12,9 @@ export const metadata = {
 export default function BattaiPage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
-      <a href="/projects" className="text-sm text-white/70 hover:underline">
+      <Link href="/projects" className="text-sm text-white/70 hover:underline">
         ← Projelere dön
-      </a>
+      </Link>
 
       <h1 className="mt-4 text-4xl font-semibold">
         BATTAI – AI Destekli Batarya Yönetim Sistemi
@@ -47,11 +48,11 @@ export default function BattaiPage() {
                   fill
                   className="object-cover"
                 />
-                {/* Tıklayınca büyük aç */}
+                {/* Tıklayınca büyük aç (dosya linki, <a> uygun) */}
                 <a
                   href={src}
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   className="absolute inset-0"
                   aria-label="Görseli büyük aç"
                 />
@@ -72,15 +73,11 @@ export default function BattaiPage() {
               </tr>
               <tr>
                 <td className="py-2 pr-6 text-white/70">AI-BMS</td>
-                <td className="py-2">
-                  SoC/SoH tahmini, yaşlanma modeli, anomali tespiti
-                </td>
+                <td className="py-2">SoC/SoH tahmini, yaşlanma modeli, anomali tespiti</td>
               </tr>
               <tr>
                 <td className="py-2 pr-6 text-white/70">Güvenlik</td>
-                <td className="py-2">
-                  Termal kaçak erken uyarı, hücre dengeleme
-                </td>
+                <td className="py-2">Termal kaçak erken uyarı, hücre dengeleme</td>
               </tr>
               <tr>
                 <td className="py-2 pr-6 text-white/70">Modülerlik</td>
@@ -105,6 +102,7 @@ export default function BattaiPage() {
       {/* Dokümanlar */}
       <Section>
         <div className="flex flex-wrap gap-3">
+          {/* PDF: dosya olduğu için <a> doğru */}
           <a
             href="/downloads/battai-brosur.pdf"
             download
@@ -114,16 +112,18 @@ export default function BattaiPage() {
             Broşürü İndir (PDF)
           </a>
 
-          <a
+          {/* İç sayfa: Link kullan */}
+          <Link
             href="/contact"
             className="rounded-xl px-5 py-3 border border-white text-white text-sm font-medium"
           >
             Demo / Görüşme Talep Et
-          </a>
+          </Link>
         </div>
 
         <p className="mt-3 text-xs text-white/60">
-          Dosya yolu: <code>/public/downloads/battai-brosur.pdf</code> — ad/büyük-küçük harf birebir aynı olmalı.
+          Dosya yolu: <code>/public/downloads/battai-brosur.pdf</code> — ad/büyük-küçük
+          harf birebir aynı olmalı.
         </p>
       </Section>
     </main>

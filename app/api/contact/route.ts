@@ -1,37 +1,37 @@
 // app/api/contact/route.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-type ContactPayload = {
-  name: string;
-  email: string;
-  message: string;
-  company?: string;
-  phone?: string;
+// Node kütüphanesi kullanmıyorsanız Edge idealdir.
+// (İlerde nodemailer kullanırsanız: export const runtime = "nodejs")
+export const runtime = "edge";
+
+type Fields = {
+  name?: string;
+  email?: string;
+  message?: string;
+  company?: string; // honeypot
 };
 
-// Node'a özel kütüphane kullanmıyorsan Edge iyi; ileride nodemailer vb. kullanırsan 'nodejs' yap.
-export const runtime = "edge"; // veya: export const runtime = "nodejs";
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = (await req.json()) as Partial<ContactPayload>;
+    const form = await req.formData();
 
-    if (!body.name || !body.email || !body.message) {
-      return NextResponse.json(
-        { ok: false, error: "VALIDATION_ERROR", missing: ["name", "email", "message"] },
-        { status: 400 }
-      );
+    const fields: Fields = {
+      name: typeof form.get("name") === "string" ? (form.get("name") as string) : undefined,
+      email: typeof form.get("email") === "string" ? (form.get("email") as string) : undefined,
+      message: typeof form.get("message") === "string" ? (form.get("message") as string) : undefined,
+      company: typeof form.get("company") === "string" ? (form.get("company") as string) : undefined,
+    };
+
+    // Basit bot filtresi (honeypot alanı)
+    if (fields.company && fields.company.trim() !== "") {
+      return NextResponse.redirect(new URL("/contact/thanks", req.url), { status: 303 });
     }
 
-    // TODO: Burada mail/DB entegrasyonunu yapabilirsiniz.
-
-    return NextResponse.json({ ok: true });
+    // TODO: Buraya mail/CRM gönderimi (Resend, SendGrid vs.)
+    return NextResponse.redirect(new URL("/contact/thanks", req.url), { status: 303 });
   } catch {
-    return NextResponse.json({ ok: false, error: "INVALID_JSON" }, { status: 400 });
+    // Geçersiz form / JSON vb. durumda nazikçe geri döndür
+    return NextResponse.redirect(new URL("/contact?e=1", req.url), { status: 303 });
   }
-}
-
-// (İsteğe bağlı) GET istekleri için basit cevap
-export function GET() {
-  return NextResponse.json({ ok: true, endpoint: "contact" });
 }

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================
+   HERO Radar Sweep Animasyonu
+   ============================ */
+@keyframes sweep {
+  to { transform: rotate(360deg); }
+}
+
+/* Hero bölümüne .radarsweep class'ını verdik.
+   Bu pseudo-element çok hafif yeşilimsi bir radar ışıması ekler. */
+.radarsweep::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 255, 150, 0.14),
+    rgba(0, 255, 150, 0.02) 28%,
+    transparent 35%
+  );
+  filter: blur(28px);
+  animation: sweep 12s linear infinite;
+  pointer-events: none;
+}

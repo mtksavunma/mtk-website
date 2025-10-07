@@ -9,12 +9,12 @@ const items: Item[] = [
   {
     date: "06.10.2025",
     title: "Enerji Verimliliği Forum ve Fuarı",
-    summary: "Stand ziyaretleri ve demo randevuları için iletişime geçebilirsiniz.",
+    summary: "Stant ziyaretleri ve demo randevuları için iletişime geçebilirsiniz.",
   },
    {
     date: "11.10.2025",
     title: "Innovation Week 2025",
-    summary: "Stand ziyaretleri ve demo randevuları için iletişime geçebilirsiniz.",
+    summary: "Stant ziyaretleri ve demo randevuları için iletişime geçebilirsiniz.",
   },
 ];
 

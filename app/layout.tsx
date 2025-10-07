@@ -3,6 +3,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Unbounded, Montserrat } from "next/font/google";
+
+// Fontlar
+const heading = Unbounded({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+});
+const body = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -33,8 +46,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr">
-      <body className="bg-[#0a0f1c] text-white">
+    <html lang="tr" className={`${heading.variable} ${body.variable}`}>
+      {/* body.className ile Montserrat tüm gövdeye uygulanır */}
+      <body className={`bg-[#0a0f1c] text-white antialiased`}>
         <Navbar />
         <div className="pt-14 min-h-[calc(100vh-56px)]">{children}</div>
         <Footer />

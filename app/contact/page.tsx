@@ -41,7 +41,7 @@ export default function ContactPage() {
               />
             </div>
             <figcaption className="mt-3 text-sm text-white/80">
-              Teknoloji Geliştirme Bölgeleri Sitesi Sakarya Teknopark Serdivan/ Sakarya
+              Teknoloji Geliştirme Bölgeleri Sitesi Sakarya Teknokent Serdivan/ Sakarya
             </figcaption>
           </figure>
         </div>

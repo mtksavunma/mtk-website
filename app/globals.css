@@ -1,15 +1,9 @@
 @import "tailwindcss";
 
+/* Renk değişkenleri */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,21 +13,50 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tailwind v4 token'ları ve next/font ile gelen değişkenler
+   (layout.tsx'te set edilen: --font-heading, --font-sans) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Tailwind'in font-sans token'ını Montserrat'a yönlendiriyoruz */
+  --font-sans: var(--font-sans);
+  /* İsteğe bağlı başlık token'ı */
+  --font-heading: var(--font-heading);
+
+  /* Kod blokları için mono stack (isteğe bağlı) */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+/* Baz stiller: gövde = Montserrat, başlıklar = Unbounded */
+@layer base {
+  html, body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+      "Apple Color Emoji", "Segoe UI Emoji";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  }
+}
+
+/* İsteğe bağlı yardımcı sınıflar */
+@layer utilities {
+  .font-heading { font-family: var(--font-heading), ui-sans-serif, system-ui; }
+  .font-body    { font-family: var(--font-sans), ui-sans-serif, system-ui; }
 }
 
 /* ============================
    HERO Radar Sweep Animasyonu
    ============================ */
-@keyframes sweep {
-  to { transform: rotate(360deg); }
-}
+@keyframes sweep { to { transform: rotate(360deg); } }
 
-/* Hero bölümüne .radarsweep class'ını verdik.
-   Bu pseudo-element çok hafif yeşilimsi bir radar ışıması ekler. */
+/* Hero bölümüne .radarsweep sınıfı verildi */
 .radarsweep::before {
   content: "";
   position: absolute;

@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Unbounded, Montserrat } from "next/font/google";
 
-// Fontlar (başlık: Unbounded, gövde: Montserrat)
+// Başlıklar: Unbounded, Gövde: Montserrat
 const unbounded = Unbounded({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -49,6 +49,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${unbounded.variable} ${montserrat.variable}`}>
-      {/* Tema tokenları: bg-background & text-foreground */}
-      <bo
+    <html
+      lang="tr"
+      className={`${unbounded.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
+    >
+      {/* Renkler ve font ailesi globals.css içinde tanımlı */}
+      <body className="antialiased">
+        <Navbar />
+        <main className="pt-14 min-h-[calc(100vh-56px)]">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

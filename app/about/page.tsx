@@ -21,7 +21,7 @@ export default function AboutPage() {
           alanlarında yenilikçi çözümler geliştiren bir teknoloji girişimidir.
           Şirket, yüksek enerji yoğunluklu batarya sistemleri, yapay zekâ
           destekli batarya yönetim sistemleri (BMS), hibrit enerji depolama
-          çözümleri ve kuantum radar teknolojileri üzerine Ar-Ge faaliyetleri
+          çözümleri ve radar teknolojileri üzerine Ar-Ge faaliyetleri
           yürütmektedir.
         </p>
         <p className="mt-4 text-white/80">

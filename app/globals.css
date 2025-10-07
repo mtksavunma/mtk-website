@@ -1,62 +1,58 @@
 @import "tailwindcss";
 
-/* Renk değişkenleri */
+/* ========== PALET ========== */
+/* Light (system light) – açık askeri gri + radar yeşili aksan */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f8fb;        /* çok açık gri-mavi */
+  --surface:    #ffffff;        /* kartlar / yüzey */
+  --foreground: #0b1220;        /* gece laciverti (metin) */
+  --muted:      #475569;        /* slate-600 */
+  --border:     rgba(2, 6, 23, .08);
+
+  --accent:     #0ea56b;        /* radar green (light) */
+  --secondary:  #0ea5e9;        /* mavi aksan */
 }
 
+/* Dark (system dark) – gece laciverti + radar yeşili parlak */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1220;      /* gunmetal navy */
+    --surface:    #0f1729;      /* kart yüzeyi */
+    --foreground: #e7ecf4;      /* açık metin */
+    --muted:      #9aa7bd;      /* soluk metin */
+    --border:     rgba(255, 255, 255, .08);
+
+    --accent:     #00f58c;      /* radar green (dark) */
+    --secondary:  #38bdf8;      /* mavi aksan */
   }
 }
 
-/* Tailwind v4 token'ları ve next/font ile gelen değişkenler
-   (layout.tsx'te set edilen: --font-heading, --font-sans) */
+/* Tailwind token eşlemesi (v4 @theme inline) */
 @theme inline {
   --color-background: var(--background);
+  --color-surface:    var(--surface);
   --color-foreground: var(--foreground);
+  --color-muted:      var(--muted);
+  --color-border:     var(--border);
+  --color-accent:     var(--accent);
+  --color-secondary:  var(--secondary);
 
-  /* Tailwind'in font-sans token'ını Montserrat'a yönlendiriyoruz */
-  --font-sans: var(--font-sans);
-  /* İsteğe bağlı başlık token'ı */
-  --font-heading: var(--font-heading);
-
-  /* Kod blokları için mono stack (isteğe bağlı) */
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sans:     var(--font-montserrat);  /* gövde */
+  --font-display:  var(--font-unbounded);   /* başlık */
 }
 
-/* Baz stiller: gövde = Montserrat, başlıklar = Unbounded */
-@layer base {
-  html, body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-      "Apple Color Emoji", "Segoe UI Emoji";
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading), ui-sans-serif, system-ui, -apple-system,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
-  }
+/* Tipografi varsayılanları */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+}
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-unbounded), var(--font-montserrat), ui-sans-serif;
 }
 
-/* İsteğe bağlı yardımcı sınıflar */
-@layer utilities {
-  .font-heading { font-family: var(--font-heading), ui-sans-serif, system-ui; }
-  .font-body    { font-family: var(--font-sans), ui-sans-serif, system-ui; }
-}
-
-/* ============================
-   HERO Radar Sweep Animasyonu
-   ============================ */
+/* Radar sweep animasyonu (aynı kaldı) */
 @keyframes sweep { to { transform: rotate(360deg); } }
-
-/* Hero bölümüne .radarsweep sınıfı verildi */
 .radarsweep::before {
   content: "";
   position: absolute;
@@ -71,4 +67,20 @@
   filter: blur(28px);
   animation: sweep 12s linear infinite;
   pointer-events: none;
+}
+
+/* Hero için tema-duyarlı maske: light modda daha hafif */
+.hero-mask { 
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.55), rgba(0,0,0,.45), rgba(0,0,0,.80)
+  );
+}
+@media (prefers-color-scheme: light){
+  .hero-mask {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,.35), rgba(0,0,0,.30), rgba(0,0,0,.50)
+    );
+  }
 }

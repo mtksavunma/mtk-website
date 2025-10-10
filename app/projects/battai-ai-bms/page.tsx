@@ -16,6 +16,7 @@ export default function BattaiPage() {
       {/* HERO – slider client bileşeni */}
       <div className="relative">
         <BattaiHero /> {/* ✅ doğru kullanım */}
+
         {/* Metin katmanı */}
         <div className="absolute inset-0 z-10">
           <div className="mx-auto flex min-h-[72vh] max-w-6xl items-center px-6">

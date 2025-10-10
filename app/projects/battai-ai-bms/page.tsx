@@ -1,10 +1,11 @@
 // app/projects/battai-ai-bms/page.tsx
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Badge from "@/components/Badge";
-import BattaiHero from "./battai-hero"; // ✅ doğru import (PascalCase + doğru dosya adı)
+import BattaiHero from "./battai-hero"; // ✅ doğru import
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "BATTAI – AI Destekli Batarya Yönetim Sistemi",
   description:
     "AI tabanlı SoC/SoH, hibrit hücre yönetimi, %63 yerlilik. TÜBİTAK & KOSGEB destekli. Patent başvurusu yapıldı.",
@@ -73,7 +74,7 @@ export default function BattaiPage() {
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
               <li>LFP/NMC/NCA birlikte kullanım</li>
-              <li>Akıllı dengeleme & modüler yapı</li>
+              <li>Akıllı dengeleme &amp; modüler yapı</li>
               <li>Görev profiline göre esnek konfigürasyon</li>
             </ul>
           </div>
@@ -107,7 +108,7 @@ export default function BattaiPage() {
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
               <li>SoC / SoH kestirimi</li>
-              <li>Anomali tespiti & erken uyarı</li>
+              <li>Anomali tespiti &amp; erken uyarı</li>
               <li>Gerçek zamanlı telemetri</li>
             </ul>
           </div>
@@ -116,7 +117,7 @@ export default function BattaiPage() {
         {/* 3) Taşınabilirlik */}
         <section id="tasinabilirlik" className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Taşınabilirlik & Entegrasyon</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold">Taşınabilirlik &amp; Entegrasyon</h2>
             <p className="mt-4 text-white/80">
               Uçan/kara/deniz platformlarına kolay entegrasyon; sahada servis edilebilir
               kompakt tasarım.
@@ -150,14 +151,14 @@ export default function BattaiPage() {
             />
           </figure>
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Ölçeklenebilirlik & Konfigürasyon</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold">Ölçeklenebilirlik &amp; Konfigürasyon</h2>
             <p className="mt-4 text-white/80">
               Hücre, modül ve paket seviyesinde seri/paralel genişleme;
               farklı platform gereksinimleri için güç/enerji optimizasyonu.
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
               <li>1–10 kWh taşınabilir paketlerden yüzlerce kWh sabit sistemlere</li>
-              <li>Seri/paralel esnek topoloji, plug & play modüller</li>
+              <li>Seri/paralel esnek topoloji, plug &amp; play modüller</li>
               <li>Redundancy ve sıcak-swap senaryoları</li>
             </ul>
           </div>
@@ -173,7 +174,7 @@ export default function BattaiPage() {
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
               <li>Isıl kısıtlar altında performans koruma</li>
-              <li>Cycle-life & calendar-life optimizasyonu</li>
+              <li>Cycle-life &amp; calendar-life optimizasyonu</li>
               <li>Akıllı dengeleme: pasif/aktif</li>
             </ul>
           </div>
@@ -200,13 +201,13 @@ export default function BattaiPage() {
             />
           </figure>
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Telemetri & Uzak Güncelleme (OTA)</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold">Telemetri &amp; Uzak Güncelleme (OTA)</h2>
             <p className="mt-4 text-white/80">
               Canlı veri izleme, log analizi ve güvenli OTA ile sahada kalibrasyon
               ve algoritma güncellemeleri.
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
-              <li>Gerçek zamanlı SoC/SoH & ısı profilleri</li>
+              <li>Gerçek zamanlı SoC/SoH &amp; ısı profilleri</li>
               <li>Güvenli firmware/parametre güncellemesi</li>
               <li>Uçtan uca izlenebilirlik</li>
             </ul>
@@ -216,7 +217,7 @@ export default function BattaiPage() {
         {/* 7) Güvenlik & Sertifikasyon */}
         <section id="guvenlik-sertifikasyon" className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Güvenlik & Sertifikasyon Yol Haritası</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold">Güvenlik &amp; Sertifikasyon Yol Haritası</h2>
             <p className="mt-4 text-white/80">
               Termal kaçak erken uyarı, izolasyon izleme ve fonksiyonel güvenlik
               hedefleri; savunma ve sanayide yaygın standartlarla uyum.

@@ -19,7 +19,7 @@ const ALL_PROJECTS: Project[] = [
     title: "BATTAI – AI Destekli Batarya Yönetim Sistemi",
     category: "ENERJI",
     summary:
-      "LFP/NMC/NCA hibrit hücre yönetimi; AI tabanlı SoC/SoH tahmini, yerli üretim oranı %63.",
+      "Hibrit hücre yönetimi; AI tabanlı SoC/SoH tahmini, yerli üretim oranı %63.",
     tags: ["AI-BMS", "Hibrit Paket", "Enerji Depolama"],
     image: "/projects/battai-main.png",
   },
@@ -46,7 +46,7 @@ export default function ProjectsPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-16">
       <h1 className="text-4xl font-semibold">Projeler</h1>
-      <p className="mt-3 text-gray-300">Enerji ve Radar odaklı ürünlerimiz.</p>
+      <p className="mt-3 text-gray-300"></p>
 
       <div className="mt-8 flex flex-wrap gap-3">
         {CATS.map(c => (
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
       </div>
 
       <p className="mt-10 text-xs text-white/50">
-        Kapak görselleri <code>/public/projects/</code> klasöründen yüklenir (örn. <code>battai-main.png</code>, <code>radar-main.png</code>).
+        
       </p>
     </main>
   );

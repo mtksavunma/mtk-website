@@ -11,10 +11,10 @@ export default function Navbar() {
           <Image
             src="/logo/mtk-logo.png"
             alt="MTK Savunma"
-            width={200}            // tahmini genişlik; w-auto olduğu için oranı korur
-            height={48}            // referans yükseklik
+            width={160}            // tahmini genişlik; w-auto olduğu için oranı korur
+            height={40}            // referans yükseklik
             priority
-            className="h-30 md:h-32 w-auto shrink-0" // ← asıl boyut kontrolü
+            className="h-20 md:h-22 w-auto shrink-0" // ← asıl boyut kontrolü
           />
           <span className="sr-only">MTK</span>
         </Link>
@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="flex items-center gap-5 text-sm">
           <Link href="/about" className="hover:underline">Hakkımızda</Link>
           <Link href="/projects" className="hover:underline">Projeler</Link>
-          <Link href="/news" className="hover:underline">Duyurular</Link>
+          <Link href="/news" className="hover:underline">Haberler</Link>
           <Link href="/contact" className="hover:underline">İletişim</Link>
         </div>
       </nav>

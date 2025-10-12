@@ -61,7 +61,7 @@ export default function ContactPage() {
             </li>
             <li>
               <span className="text-white font-medium">Faks: </span>
-              info@mtksavunma.com
+              
             </li>
           </ul>
         </div>

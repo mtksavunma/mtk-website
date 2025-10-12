@@ -38,7 +38,7 @@ export default function BattaiPage() {
               </div>
 
               <p className="mt-4 text-white/85">
-                LFP/NMC/NCA gibi farklı kimyalarda çalışan modüler BMS; AI ile SoC/SoH,
+                Farklı kimyalarda çalışan modüler BMS; AI ile SoC/SoH,
                 termal güvenlik ve görev profiline göre verim optimizasyonu.
               </p>
 
@@ -73,7 +73,7 @@ export default function BattaiPage() {
               görev profiline uyarlanabilir modüler topoloji.
             </p>
             <ul className="mt-4 list-disc pl-5 text-white/75">
-              <li>LFP/NMC/NCA birlikte kullanım</li>
+              <li>Farklı kimyalara sahip hücrelerin birlikte kullanım</li>
               <li>Akıllı dengeleme &amp; modüler yapı</li>
               <li>Görev profiline göre esnek konfigürasyon</li>
             </ul>
@@ -267,7 +267,7 @@ export default function BattaiPage() {
               <tbody className="divide-y divide-white/10">
                 <tr>
                   <td className="py-2 pr-6 text-white/70">Hücre Kimyası</td>
-                  <td className="py-2">LFP / NMC / NCA (hibrit destek)</td>
+                  <td className="py-2">Hibrit batarya konfigürasyonu</td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-6 text-white/70">AI-BMS</td>

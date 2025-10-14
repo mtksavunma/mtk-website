@@ -17,25 +17,25 @@ const MONTHS_TR_SHORT = [
 
 const SAMPLE_NEWS: NewsItem[] = [
   {
-    slug: "battai-prototip-2-saha-testini-tamamladi",
-    title: "BATTAI Prototip-2 saha testini tamamladı",
+    slug: "turkiye-innovation-week",
+    title: "Türkiye Innovation Week 2025 Sahnesi",
     summary:
-      "Yeni termal güvenlik algoritmalarıyla 38°C ortamda uzun süreli görev denemeleri başarıyla tamamlandı.",
+      "Türkiye İhracatçılar Meclisi tarafından düzenlenen TIW’25 etkinliği başarıyla tamamlandı.",
     date: "2025-10-11",
   },
   {
-    slug: "radar-zeka-modulu-dusuk-rcs-senaryolarinda-ilerleme",
-    title: "Radar Zekâ Modülü düşük RCS senaryolarında ilerleme",
+    slug: "enerji-forum-fuari", // ✅ sayfa klasörüyle birebir aynı
+    title: "Enerji Forum ve Fuarı",
     summary:
-      "Yeni filtreleme zinciri ile zayıf hedeflerde tespit/izleme başarımı %12 iyileşti.",
-    date: "2025-09-28",
+      "Yenilenebilir + depolama odaklı çözümlerimizle fuarda yer aldık.",
+    date: "2025-10-07",
   },
   {
-    slug: "arge-laboratuvari-genisletildi",
-    title: "Ar-Ge laboratuvarımız genişletildi",
+    slug: "innopark-demoday-odul",
+    title: "Ödül Aldık",
     summary:
-      "Batarya çevrim ömrü ve çevresel test altyapısı güçlendirildi; yeni kalibrasyon düzeneği devrede.",
-    date: "2025-09-10",
+      "Konya Innopark’ta düzenlenen DemoDay’de finalist olarak ödül kazandık.",
+    date: "2025-09-28",
   },
   {
     slug: "yeni-is-birligi-cercevesi",

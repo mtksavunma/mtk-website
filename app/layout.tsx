@@ -45,6 +45,9 @@ export const metadata: Metadata = {
     images: ["/og.jpg"],
   },
   icons: { icon: "/icon1.png" },
+  // Bu iki satır koyu tema sinyali verir (Next Metadata API ile)
+  themeColor: "#0b1220",
+  other: { "color-scheme": "dark" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,8 +57,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${unbounded.variable} ${montserrat.variable}`}
       suppressHydrationWarning
     >
-      {/* Renkler ve font ailesi globals.css içinde tanımlı */}
-      <body className="antialiased">
+      <head>
+        {/* Eski tarayıcılar için de garanti */}
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#0b1220" />
+      </head>
+      {/* arkaplan/metni sınıf olarak da sabitleyelim */}
+      <body className="antialiased bg-[var(--background)] text-[var(--foreground)]">
         <Navbar />
         <main className="pt-14 min-h-[calc(100vh-56px)]">{children}</main>
         <Footer />

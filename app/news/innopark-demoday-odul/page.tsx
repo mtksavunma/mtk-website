@@ -7,9 +7,9 @@ export default function Page() {
   // 3 görsel – public/news altına koyacağız
   const slides = useMemo(
     () => [
-      "/news/innopark-demoday-1.jpg",
-      "/news/innopark-demoday-2.jpg",
-      "/news/innopark-demoday-3.jpg",
+      "/News/innopark-demoday-1.jpg",
+      "/News/innopark-demoday-2.jpg",
+      "/News/innopark-demoday-3.jpg",
     ],
     []
   );

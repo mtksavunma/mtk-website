@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function InnovationWeekPage() {
-  const images = ["/news/innovation-1.jpg", "/news/innovation-2.jpg", "/news/innovation-3.jpg"];
+  const images = ["/News/innovation-1.jpg", "/News/innovation-2.jpg", "/News/innovation-3.jpg"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function InnovationWeekPage() {
         {/* SAĞDA KÜÇÜK FOTOĞRAF */}
         <figure className="relative aspect-[4/3] w-full rounded-2xl border border-white/10 overflow-hidden">
           <Image
-            src="/news/innovation-thumb.jpg"
+            src="/News/innovation-thumb.jpg"
             alt="MTK standı Türkiye Innovation Week"
             fill
             sizes="(min-width: 768px) 30vw, 100vw"

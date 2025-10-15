@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
 import News from "@/components/News";
+import type { CSSProperties } from "react";
 
 // NOT: Görselleri public/logo klasörüne koy:
 // public/logo/sakarya-teknokent.png, fuzyon-kulucka.png, itu-arikent.png,
@@ -15,6 +16,10 @@ const partnerLogos = [
   { src: "/logo/tubitak.png",           alt: "TÜBİTAK" },
 ];
 
+// CSS değişkenini typesafe kullan
+type MarqueeVars = CSSProperties & { ["--marquee-speed"]?: string };
+const marqueeStyle: MarqueeVars = { ["--marquee-speed"]: "22s" };
+
 export default function HomePage() {
   return (
     <main>
@@ -23,8 +28,8 @@ export default function HomePage() {
 
       {/* Destekçiler – başlıksız, ince akış şeridi */}
       <section
-        className="relative group overflow-hidden border-t border-white/4 py-2" // ↑ şerit yüksekliği
-        style={{ ["--marquee-speed" as any]: "22s" }}
+        className="relative group overflow-hidden border-t border-white/10 py-2"
+        style={marqueeStyle}
         aria-label="Destek veren kuruluşların logoları"
       >
         {/* Sol/Sağ fade (globals.css’te tanımlı) */}
@@ -34,21 +39,15 @@ export default function HomePage() {
         {/* Sonsuz akan hat */}
         <div className="marquee-track flex w-[200%] items-center gap-12">
           {[...Array(2)].map((_, loopIdx) => (
-            <div
-              key={loopIdx}
-              className="flex w-1/2 items-center justify-around gap-12 px-6"
-            >
+            <div key={loopIdx} className="flex w-1/2 items-center justify-around gap-12 px-6">
               {partnerLogos.map((l) => (
-                <div
-                  key={`${loopIdx}-${l.src}`}
-                  className="shrink-0 opacity-80 transition group-hover:opacity-100"
-                >
+                <div key={`${loopIdx}-${l.src}`} className="shrink-0 opacity-80 transition group-hover:opacity-100">
                   <Image
                     src={l.src}
                     alt={l.alt}
                     width={240}
                     height={80}
-                    className="h-14 md:h-16 lg:h-18 w-auto object-contain" // ↑ LOGO BOYUTU
+                    className="h-14 md:h-16 w-auto object-contain"
                     priority={loopIdx === 0}
                   />
                 </div>

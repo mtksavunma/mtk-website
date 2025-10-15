@@ -1,22 +1,15 @@
+// app/news/turkiye-innovation-week/page.tsx
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function InnovationWeekPage() {
-  const images = [
-    "/news/innovation-1.jpg",
-    "/news/innovation-2.jpg",
-    "/news/innovation-3.jpg",
-  ];
-
+  const images = ["/news/innovation-1.jpg", "/news/innovation-2.jpg", "/news/innovation-3.jpg"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 2000);
+    const id = setInterval(() => setIndex((prev) => (prev + 1) % images.length), 2000);
     return () => clearInterval(id);
   }, [images.length]);
 
@@ -24,10 +17,7 @@ export default function InnovationWeekPage() {
     <main className="mx-auto max-w-5xl px-6 py-16 space-y-10">
       {/* FOTOĞRAF KARUSELİ */}
       <section className="relative h-[60vh] w-full overflow-hidden rounded-2xl border border-white/10">
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${index * 100}%)` }}
-        >
+        <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${index * 100}%)` }}>
           {images.map((src, i) => (
             <div key={i} className="relative h-[60vh] w-full shrink-0">
               <Image
@@ -44,7 +34,7 @@ export default function InnovationWeekPage() {
         </div>
 
         {/* Noktalar */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
           {images.map((_, i) => (
             <button
               key={i}
@@ -58,7 +48,9 @@ export default function InnovationWeekPage() {
       </section>
 
       {/* HABER BAŞLIĞI */}
-      <h1 className="text-4xl font-bold">MTK Uzay ve Savunma Teknolojileri A.Ş, Türkiye Innovation Week’te Yerini Aldı</h1>
+      <h1 className="text-4xl font-bold">
+        MTK Uzay ve Savunma Teknolojileri A.Ş, Türkiye Innovation Week’te Yerini Aldı
+      </h1>
 
       {/* HABER METNİ */}
       <section className="grid gap-8 md:grid-cols-[2fr_1fr] md:items-start">

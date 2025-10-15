@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function EVFNewsPage() {
   // --- Slider görselleri ---
   const slides = useMemo(
-    () => ["/news/evf-1.jpeg", "/news/evf-2.jpeg", "/news/evf-3.jpeg"],
+    () => ["/news/evf-1.jpg", "/news/evf-2.jpg", "/news/evf-3.jpg"],
     []
   );
   const [idx, setIdx] = useState(0);
@@ -104,7 +104,7 @@ export default function EVFNewsPage() {
         <aside>
           <figure className="rounded-2xl border border-white/10 overflow-hidden">
             <Image
-              src="/news/evf-side.jpeg"
+              src="/news/evf-side.jpg"
               alt="EVF 2025 - MTK standından bir kare"
               width={800}
               height={600}

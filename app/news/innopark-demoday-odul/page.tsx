@@ -9,7 +9,7 @@ export default function Page() {
     () => [
       "/news/innopark-demoday-1.jpg",
       "/news/innopark-demoday-2.jpg",
-      "/news/innopark-demoday-3.png",
+      "/news/innopark-demoday-3.jpg",
     ],
     []
   );

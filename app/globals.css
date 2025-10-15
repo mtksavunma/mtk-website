@@ -61,7 +61,7 @@ body {
   pointer-events: none;
 }
 
-/* Hero maskesi — light override KALDIRILDI (hep aynı yoğunluk) */
+/* Hero maskesi */
 .hero-mask {
   background-image: linear-gradient(
     to bottom,
@@ -95,4 +95,31 @@ body {
   inset: 0 0 0 auto;
   width: 64px;
   background: linear-gradient(to left, var(--background), transparent);
+}
+
+/* ====== Partners ticker (logo şeridi) – AÇIK bant ====== */
+.partners-band {
+  /* koyu temayı bozmadan hafifçe AÇIK bir zemin */
+  background: rgba(255, 255, 255, 0.055);
+  /* üst–alt ince çizgi */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  /* hafif cam efekti */
+  backdrop-filter: saturate(105%) blur(2px);
+}
+
+/* logolar biraz daha okunaklı */
+.partners-logo {
+  opacity: 0.95;
+  filter: brightness(1.06) contrast(1.05);
+  transition: opacity .2s ease;
+}
+.group:hover .partners-logo { opacity: 1; }
+
+/* Şerit içindeki kenar fade’leri bantla uyumlu */
+.partners-band .marquee-fade-l {
+  background: linear-gradient(to right, rgba(255,255,255,0.055), transparent);
+}
+.partners-band .marquee-fade-r {
+  background: linear-gradient(to left, rgba(255,255,255,0.055), transparent);
 }

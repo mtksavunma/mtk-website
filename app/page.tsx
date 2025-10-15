@@ -28,11 +28,11 @@ export default function HomePage() {
 
       {/* Destekçiler – başlıksız, ince akış şeridi */}
       <section
-        className="relative group overflow-hidden border-t border-white/10 py-2"
+        className="partners-band relative group overflow-hidden py-2"
         style={marqueeStyle}
         aria-label="Destek veren kuruluşların logoları"
       >
-        {/* Sol/Sağ fade (globals.css’te tanımlı) */}
+        {/* Sol/Sağ fade */}
         <div className="marquee-fade-l" />
         <div className="marquee-fade-r" />
 
@@ -41,7 +41,7 @@ export default function HomePage() {
           {[...Array(2)].map((_, loopIdx) => (
             <div key={loopIdx} className="flex w-1/2 items-center justify-around gap-12 px-6">
               {partnerLogos.map((l) => (
-                <div key={`${loopIdx}-${l.src}`} className="shrink-0 opacity-80 transition group-hover:opacity-100">
+                <div key={`${loopIdx}-${l.src}`} className="partners-logo shrink-0">
                   <Image
                     src={l.src}
                     alt={l.alt}

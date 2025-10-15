@@ -70,11 +70,10 @@ export default function EVFNewsPage() {
         {/* Metin */}
         <div className="prose prose-invert max-w-none">
           <p>
-            MTK Uzay ve Savunma Teknolojileri A.Ş.,{" "}
-            <strong>Enerji Verimliliği Forumu ve Fuarı 2025</strong>’te
+              MTK Uzay ve Savunma Teknolojileri A.Ş., <strong>Enerji Verimliliği Forumu ve Fuarı 2025</strong>’te
             (6–7 Ekim, İstanbul Kongre Merkezi) yer aldı. Etkinlik, enerji ve
-            teknoloji sektörlerinden şirketleri; kamu, akademi ve sivil toplum
-            temsilcileriyle bir araya getiren Türkiye’nin önemli buluşmalarından
+             teknoloji sektörlerinden şirketleri; kamu, akademi ve sivil toplum
+           temsilcileriyle bir araya getiren Türkiye’nin önemli buluşmalarından
             biri konumunda.
           </p>
 

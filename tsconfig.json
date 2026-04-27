@@ -17,12 +17,11 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    // ⭐️ ALIAS İÇİN GEREKENLER
-    "baseUrl": ".", // <— BUNU EKLİYORUZ
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
-      ] // <— '@/components/...' gibi kullanmak için
+      ]
     },
     "plugins": [
       {
@@ -31,13 +30,14 @@
     ]
   },
   "include": [
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next"
   ]
 }

@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import ParallaxHeroImage from "@/components/ParallaxHeroImage";
 
-export default function BattaiHero() {
+export default function StaviaHero() {
   const slides = useMemo(
     () => [
-      "/projects/battai-hero-1.png",
-      "/projects/battai-hero-2.png",
-      "/projects/battai-hero-3.png",
+      "/projects/stavia-hero-1.png",
+      "/projects/stavia-hero-2.png",
+      "/projects/stavia-hero-3.png",
     ],
     []
   );
@@ -27,44 +27,41 @@ export default function BattaiHero() {
       <div
         className="absolute inset-0 flex h-full w-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${idx * 100}%)` }}
-        aria-live="polite"
       >
         {slides.map((src, i) => (
           <div key={src} className="relative h-full w-full shrink-0">
-            <Image
+            <ParallaxHeroImage
               src={src}
-              alt={`BATTAI hero görseli ${i + 1}`}
-              fill
-              sizes="100vw"
-              className="pointer-events-none select-none object-cover object-center blur-[1px] scale-[1.01]"
+              alt={`STAVIA hero görseli ${i + 1}`}
               priority={i === 0}
+              offset={70}
             />
+
             <div
               className="absolute inset-0"
-              aria-hidden
               style={{
                 background: `
                   linear-gradient(to right,
-                    rgba(245,247,251,0.82) 0%,
-                    rgba(245,247,251,0.68) 28%,
-                    rgba(245,247,251,0.34) 52%,
-                    rgba(245,247,251,0.12) 72%,
-                    rgba(245,247,251,0.18) 100%
+                    rgba(245,247,251,0.85) 0%,
+                    rgba(245,247,251,0.70) 30%,
+                    rgba(245,247,251,0.35) 55%,
+                    rgba(245,247,251,0.15) 75%,
+                    rgba(245,247,251,0.2) 100%
                   ),
                   linear-gradient(to bottom,
-                    rgba(255,255,255,0.34) 0%,
-                    rgba(255,255,255,0.10) 48%,
-                    rgba(245,247,251,0.86) 100%
+                    rgba(255,255,255,0.35) 0%,
+                    rgba(255,255,255,0.1) 50%,
+                    rgba(245,247,251,0.9) 100%
                   )
                 `,
               }}
             />
+
             <div
-              className="absolute inset-0 opacity-70"
-              aria-hidden
+              className="absolute inset-0 opacity-60"
               style={{
                 background:
-                  "radial-gradient(circle at 20% 22%, rgba(255,255,255,0.42), transparent 24%), radial-gradient(circle at 80% 18%, rgba(245,158,11,0.08), transparent 20%), radial-gradient(circle at 62% 74%, rgba(19,41,75,0.06), transparent 24%)",
+                  "radial-gradient(circle at 80% 25%, rgba(56,189,248,0.12), transparent 25%), radial-gradient(circle at 20% 70%, rgba(245,158,11,0.08), transparent 25%)",
               }}
             />
           </div>
@@ -73,26 +70,23 @@ export default function BattaiHero() {
 
       <div
         className="absolute inset-x-0 bottom-0 h-40"
-        aria-hidden
         style={{
           background:
-            "linear-gradient(to bottom, rgba(245,247,251,0) 0%, rgba(245,247,251,0.72) 62%, rgba(245,247,251,1) 100%)",
+            "linear-gradient(to bottom, rgba(245,247,251,0) 0%, rgba(245,247,251,0.7) 60%, rgba(245,247,251,1) 100%)",
         }}
       />
 
-      <div className="pointer-events-auto absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {slides.map((_, i) => {
           const active = i === idx;
           return (
             <button
               key={i}
-              type="button"
-              aria-label={`Görsel ${i + 1}`}
               onClick={() => setIdx(i)}
               className={`h-2.5 rounded-full transition-all ${
                 active
                   ? "w-6 bg-[var(--accent)]"
-                  : "w-2.5 bg-[rgba(19,41,75,0.28)] hover:bg-[rgba(19,41,75,0.45)]"
+                  : "w-2.5 bg-[rgba(19,41,75,0.25)] hover:bg-[rgba(19,41,75,0.4)]"
               }`}
             />
           );

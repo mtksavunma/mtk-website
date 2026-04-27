@@ -54,7 +54,7 @@ export default function InnovationWeekPage() {
 
       {/* HABER METNİ */}
       <section className="grid gap-8 md:grid-cols-[2fr_1fr] md:items-start">
-        <div className="text-white/85 leading-relaxed">
+        <div className="leading-relaxed text-[var(--muted)] [&_strong]:text-[var(--accent)] [&_em]:text-[var(--accent)]">
           <p>
             Türkiye’nin en büyük inovasyon ve teknoloji etkinliklerinden biri olan
             <strong> Türkiye Innovation Week</strong>, bu yıl da binlerce katılımcıyı

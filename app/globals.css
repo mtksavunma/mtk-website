@@ -1,50 +1,78 @@
 @import "tailwindcss";
 
-/* ========== PALET (HER ZAMAN KOYU) ========== */
+/* ========== PALET (AÇIK TEMA) ========== */
 :root {
-  --background: #0b1220;      /* gunmetal navy */
-  --surface:    #0f1729;      /* kart yüzeyi */
-  --foreground: #e7ecf4;      /* açık metin */
-  --muted:      #9aa7bd;      /* soluk metin */
-  --border:     rgba(255, 255, 255, .08);
+  --background: #f5f7fb;                 /* açık ana zemin */
+  --surface: rgba(255, 255, 255, 0.68); /* cam yüzey */
+  --surface-strong: rgba(255, 255, 255, 0.86);
 
-  --accent:     #00f58c;      /* radar green */
-  --secondary:  #38bdf8;      /* mavi aksan */
+  --foreground: #0f172a;                /* ana yazı */
+  --muted: #5b6475;                     /* ikincil yazı */
+  --border: rgba(15, 23, 42, 0.08);
+
+  --accent: #13294b;                    /* lacivert */
+  --secondary: #f59e0b;                 /* turuncu */
 }
 
-/* Tarayıcıya yalnızca koyu şema kullandığımızı söyle */
+/* Tarayıcıya açık şema sinyali */
 html {
-  color-scheme: dark;
-  background: var(--background); /* iOS/Safari beyaz flash engeli */
+  color-scheme: light;
+  background:
+    radial-gradient(circle at top left, rgba(19, 41, 75, 0.06), transparent 28%),
+    radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 22%),
+    linear-gradient(to bottom, #f8fafc, #f3f6fb);
+  min-height: 100%;
 }
 
-/* Tailwind token eşlemesi (v4 @theme inline) */
+/* Tailwind token eşlemesi */
 @theme inline {
   --color-background: var(--background);
-  --color-surface:    var(--surface);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --color-muted:      var(--muted);
-  --color-border:     var(--border);
-  --color-accent:     var(--accent);
-  --color-secondary:  var(--secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
 
-  --font-sans:     var(--font-montserrat);  /* gövde */
-  --font-display:  var(--font-unbounded);   /* başlık */
+  --font-sans: var(--font-montserrat);
+  --font-display: var(--font-unbounded);
 }
 
 /* Tipografi varsayılanları */
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system,
-               Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
 }
+
 :where(h1, h2, h3, h4) {
   font-family: var(--font-unbounded), var(--font-montserrat), ui-sans-serif;
+  color: #10213c;
+}
+
+/* ========== Ortak glass sınıfı ========== */
+.glass {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.10);
 }
 
 /* ========== Radar sweep ========== */
-@keyframes sweep { to { transform: rotate(360deg); } }
+@keyframes sweep {
+  to { transform: rotate(360deg); }
+}
+
 .radarsweep::before {
   content: "";
   position: absolute;
@@ -52,74 +80,96 @@ body {
   border-radius: 9999px;
   background: conic-gradient(
     from 0deg,
-    rgba(0, 255, 150, 0.14),
-    rgba(0, 255, 150, 0.02) 28%,
+    rgba(19, 41, 75, 0.08),
+    rgba(245, 158, 11, 0.05) 22%,
     transparent 35%
   );
-  filter: blur(28px);
-  animation: sweep 12s linear infinite;
+  filter: blur(36px);
+  animation: sweep 16s linear infinite;
   pointer-events: none;
 }
 
-/* Hero maskesi */
+/* Hero açık maske */
 .hero-mask {
   background-image: linear-gradient(
     to bottom,
-    rgba(0,0,0,.55), rgba(0,0,0,.45), rgba(0,0,0,.80)
+    rgba(255,255,255,0.70),
+    rgba(255,255,255,0.48),
+    rgba(245,247,251,0.88)
   );
 }
 
-/* ========== Marquee (logo şeridi) ========== */
+/* Ekstra açık hero maskesi istersen */
+.hero-light-mask {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.72),
+      rgba(255,255,255,0.52),
+      rgba(245,247,251,0.90)
+    );
+}
+
+/* ========== Marquee (eski yapı kalsın diye uyarlanmış) ========== */
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
 .marquee-track {
   animation: marquee-left var(--marquee-speed, 22s) linear infinite;
   will-change: transform;
 }
-.group:hover .marquee-track { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none !important; }
+
+.group:hover .marquee-track {
+  animation-play-state: paused;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
 .marquee-fade-l {
   pointer-events: none;
   position: absolute;
   inset: 0 auto 0 0;
   width: 64px;
-  background: linear-gradient(to right, var(--background), transparent);
+  background: linear-gradient(to right, #f5f7fb, transparent);
 }
+
 .marquee-fade-r {
   pointer-events: none;
   position: absolute;
   inset: 0 0 0 auto;
   width: 64px;
-  background: linear-gradient(to left, var(--background), transparent);
+  background: linear-gradient(to left, #f5f7fb, transparent);
 }
 
-/* ====== Partners ticker (logo şeridi) – AÇIK bant ====== */
+/* ====== Partners ticker (kalsa bile açık temaya uyumlu) ====== */
 .partners-band {
-  /* koyu temayı bozmadan hafifçe AÇIK bir zemin */
-  background: rgba(255, 255, 255, 0.055);
-  /* üst–alt ince çizgi */
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-  /* hafif cam efekti */
-  backdrop-filter: saturate(105%) blur(2px);
+  background: rgba(255, 255, 255, 0.45);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  backdrop-filter: saturate(120%) blur(10px);
+  -webkit-backdrop-filter: saturate(120%) blur(10px);
 }
 
-/* logolar biraz daha okunaklı */
 .partners-logo {
-  opacity: 0.95;
-  filter: brightness(1.06) contrast(1.05);
-  transition: opacity .2s ease;
+  opacity: 0.9;
+  filter: contrast(1.02) saturate(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.group:hover .partners-logo { opacity: 1; }
 
-/* Şerit içindeki kenar fade’leri bantla uyumlu */
-.partners-band .marquee-fade-l {
-  background: linear-gradient(to right, rgba(255,255,255,0.055), transparent);
+.group:hover .partners-logo {
+  opacity: 1;
 }
+
+.partners-band .marquee-fade-l {
+  background: linear-gradient(to right, rgba(245, 247, 251, 1), transparent);
+}
+
 .partners-band .marquee-fade-r {
-  background: linear-gradient(to left, rgba(255,255,255,0.055), transparent);
+  background: linear-gradient(to left, rgba(245, 247, 251, 1), transparent);
 }

@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Providers from "@/components/providers";
 import { Unbounded, Montserrat } from "next/font/google";
 
-// Başlıklar: Unbounded, Gövde: Montserrat
 const unbounded = Unbounded({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -45,12 +45,15 @@ export const metadata: Metadata = {
     images: ["/og.jpg"],
   },
   icons: { icon: "/icon1.png" },
-  // Bu iki satır koyu tema sinyali verir (Next Metadata API ile)
   themeColor: "#0b1220",
   other: { "color-scheme": "dark" },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="tr"
@@ -58,15 +61,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* Eski tarayıcılar için de garanti */}
         <meta name="color-scheme" content="dark" />
         <meta name="theme-color" content="#0b1220" />
       </head>
-      {/* arkaplan/metni sınıf olarak da sabitleyelim */}
+
       <body className="antialiased bg-[var(--background)] text-[var(--foreground)]">
-        <Navbar />
-        <main className="pt-14 min-h-[calc(100vh-56px)]">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="pt-[76px] min-h-[calc(100vh-76px)]">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

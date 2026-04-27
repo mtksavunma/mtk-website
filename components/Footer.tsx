@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getSiteMessages } from "@/messages/site";
 
 /** Sosyal ikonlar */
 function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -36,20 +40,26 @@ const EMAIL = "info@mtksavunma.com";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { lang } = useLanguage();
+  const t = getSiteMessages(lang);
 
   return (
-    <footer className="mt-16 border-t border-white/10">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-10 text-sm text-white/70 sm:grid-cols-3">
-        {/* SOL */}
+    <footer className="mt-16 border-t border-[rgba(19,41,75,0.10)] bg-[rgba(255,255,255,0.42)] backdrop-blur-xl">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-10 text-sm text-[var(--muted)] sm:grid-cols-3">
         <div>
-          <div>© {year} MTK Savunma. Tüm hakları saklıdır.</div>
+          <div>
+            © {year} MTK Savunma. {t.footer.rights}
+          </div>
           <nav className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-            <Link href="/about" className="hover:underline">Hakkımızda</Link>
-            <Link href="/news" className="hover:underline">Duyurular</Link>
+            <Link href="/about" className="transition hover:text-[var(--accent)] hover:underline">
+              {t.footer.about}
+            </Link>
+            <Link href="/news" className="transition hover:text-[var(--accent)] hover:underline">
+              {t.footer.announcements}
+            </Link>
           </nav>
         </div>
 
-        {/* ORTA — Sosyal */}
         <div className="flex items-start justify-center sm:items-center">
           <div className="flex items-center gap-5">
             <a
@@ -58,29 +68,31 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="MTK Savunma LinkedIn"
-              className="text-white/70 hover:text-white transition"
+              className="text-[var(--muted)] transition hover:text-[var(--accent)]"
             >
               <LinkedInIcon className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
+
             <a
               href="https://www.instagram.com/mtkdefence/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
               title="MTK Savunma Instagram"
-              className="text-white/70 hover:text-white transition"
+              className="text-[var(--muted)] transition hover:text-[var(--accent)]"
             >
               <InstagramIcon className="h-6 w-6" />
               <span className="sr-only">Instagram</span>
             </a>
+
             <a
               href="https://mtksavunma.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Web"
               title="Web Sitesi"
-              className="text-white/70 hover:text-white transition"
+              className="text-[var(--muted)] transition hover:text-[var(--accent)]"
             >
               <GlobeIcon className="h-6 w-6" />
               <span className="sr-only">Web</span>
@@ -88,18 +100,25 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* SAĞ — Bize Ulaşın */}
         <div className="sm:justify-self-end">
-          <h3 className="text-white/90 font-medium">Bize Ulaşın</h3>
+          <h3 className="font-medium text-[var(--accent)]">
+            {t.footer.contactTitle}
+          </h3>
           <ul className="mt-3 space-y-2">
             <li>
-              <a href={`mailto:${EMAIL}`} className="hover:underline">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="transition hover:text-[var(--accent)] hover:underline"
+              >
                 {EMAIL}
               </a>
             </li>
             <li>
-              <Link href="/contact" className="hover:underline">
-                İletişim Formu
+              <Link
+                href="/contact"
+                className="transition hover:text-[var(--accent)] hover:underline"
+              >
+                {t.footer.contactForm}
               </Link>
             </li>
           </ul>

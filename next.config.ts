@@ -1,10 +1,6 @@
 // next.config.ts
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true, // ❗ derlemede lint hatalarını es geç
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

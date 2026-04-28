@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 export async function POST(req: Request) {
   try {
@@ -16,7 +17,6 @@ export async function POST(req: Request) {
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
       secure: false,
-      family: 4,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       tls: {
         ciphers: "TLSv1.2",
       },
-    });
+    } as SMTPTransport.Options);
 
     await transporter.sendMail({
       from: `"MTK Savunma Web Sitesi" <${process.env.SMTP_USER}>`,

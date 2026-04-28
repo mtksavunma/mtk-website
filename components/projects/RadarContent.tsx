@@ -109,7 +109,7 @@ export default function RadarContent() {
           <section className="grid gap-8 md:grid-cols-2 md:items-center">
             <figure className={`${imageFrameClass} order-last md:order-first`}>
               <Image
-                src="/projects/radar-main.png"
+                src="/projects/radar-bir.png"
                 alt={t.imageAlt.detection}
                 width={1200}
                 height={900}
@@ -149,7 +149,7 @@ export default function RadarContent() {
             </div>
             <figure className={imageFrameClass}>
               <Image
-                src="/projects/radar-overview.png"
+                src="/projects/radar-iki.png"
                 alt={t.imageAlt.lowVisibility}
                 width={1200}
                 height={900}
@@ -163,7 +163,7 @@ export default function RadarContent() {
           <section className="grid gap-8 md:grid-cols-2 md:items-center">
             <figure className={`${imageFrameClass} order-last md:order-first`}>
               <Image
-                src="/projects/radar-main.png"
+                src="/projects/radar-uc.png"
                 alt={t.imageAlt.integration}
                 width={1200}
                 height={900}

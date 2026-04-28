@@ -14,6 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { lang, setLang, mounted: languageMounted } = useLanguage();
   const t = getSiteMessages(lang);
@@ -65,7 +66,7 @@ export default function Navbar() {
     >
       <nav
         className={[
-          "mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-300",
+          "relative mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-300",
           navScrolled ? "h-[68px]" : "h-[76px]",
         ].join(" ")}
       >
@@ -73,16 +74,17 @@ export default function Navbar() {
           href="/"
           className="flex items-center"
           aria-label="MTK Savunma - Anasayfa"
+          onClick={() => setMobileMenuOpen(false)}
         >
           <Image
             src="/logo/mtk-logo.png"
             alt="MTK Savunma"
-            width={140}
-            height={44}
+            width={190}
+            height={60}
             priority
             className={[
               "w-auto shrink-0 brightness-0 transition-all duration-300",
-              navScrolled ? "h-9 md:h-10" : "h-11 md:h-12",
+              navScrolled ? "h-11 md:h-12" : "h-14 md:h-16",
             ].join(" ")}
           />
           <span className="sr-only">MTK Savunma</span>
@@ -164,18 +166,46 @@ export default function Navbar() {
             </div>
           )}
 
-          <Link
-            href="/contact"
-            className={[
-              "inline-flex items-center justify-center rounded-full border text-sm font-medium text-[var(--accent)] transition-all duration-300",
-              navScrolled
-                ? "border-[rgba(19,41,75,0.14)] bg-white px-4 py-2 shadow-[0_6px_20px_rgba(15,23,42,0.05)] hover:bg-[rgba(19,41,75,0.04)]"
-                : "border-[rgba(19,41,75,0.12)] bg-white px-4 py-2 hover:bg-[rgba(19,41,75,0.04)]",
-            ].join(" ")}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(19,41,75,0.12)] bg-white/70 backdrop-blur-md transition-all duration-300 hover:bg-white"
+            aria-label="Menüyü aç/kapat"
+            aria-expanded={mobileMenuOpen}
           >
-            {t.nav.contact}
-          </Link>
+            <span className="flex flex-col gap-1.5">
+              <span className="block h-[2px] w-5 rounded-full bg-[var(--accent)]" />
+              <span className="block h-[2px] w-5 rounded-full bg-[var(--accent)]" />
+              <span className="block h-[2px] w-5 rounded-full bg-[var(--accent)]" />
+            </span>
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="absolute right-6 top-full mt-3 w-[220px] rounded-3xl border border-[rgba(19,41,75,0.10)] bg-white/85 p-3 shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-2xl md:hidden">
+            <div className="flex flex-col gap-1">
+              {navItems.map((item) => {
+                const active = isActive(item.href);
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={[
+                      "rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-300",
+                      active
+                        ? "bg-[rgba(19,41,75,0.10)] text-[var(--accent)]"
+                        : "text-[var(--accent)] hover:bg-[rgba(19,41,75,0.06)]",
+                    ].join(" ")}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );

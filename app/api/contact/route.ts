@@ -1,37 +1,53 @@
-// app/api/contact/route.ts
 import { NextResponse } from "next/server";
-
-// Node kütüphanesi kullanmıyorsanız Edge idealdir.
-// (İlerde nodemailer kullanırsanız: export const runtime = "nodejs")
-export const runtime = "edge";
-
-type Fields = {
-  name?: string;
-  email?: string;
-  message?: string;
-  company?: string; // honeypot
-};
+import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const form = await req.formData();
+    const { name, email, phone, message } = await req.json();
 
-    const fields: Fields = {
-      name: typeof form.get("name") === "string" ? (form.get("name") as string) : undefined,
-      email: typeof form.get("email") === "string" ? (form.get("email") as string) : undefined,
-      message: typeof form.get("message") === "string" ? (form.get("message") as string) : undefined,
-      company: typeof form.get("company") === "string" ? (form.get("company") as string) : undefined,
-    };
-
-    // Basit bot filtresi (honeypot alanı)
-    if (fields.company && fields.company.trim() !== "") {
-      return NextResponse.redirect(new URL("/contact/thanks", req.url), { status: 303 });
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, error: "Zorunlu alanlar eksik." },
+        { status: 400 }
+      );
     }
 
-    // TODO: Buraya mail/CRM gönderimi (Resend, SendGrid vs.)
-    return NextResponse.redirect(new URL("/contact/thanks", req.url), { status: 303 });
-  } catch {
-    // Geçersiz form / JSON vb. durumda nazikçe geri döndür
-    return NextResponse.redirect(new URL("/contact?e=1", req.url), { status: 303 });
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: false,
+      family: 4,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        ciphers: "TLSv1.2",
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"MTK Savunma Web Sitesi" <${process.env.SMTP_USER}>`,
+      to: process.env.CONTACT_TO || process.env.SMTP_USER,
+      replyTo: email,
+      subject: "MTK Savunma Web Sitesi - Yeni İletişim Mesajı",
+      html: `
+        <h2>Yeni İletişim Formu Mesajı</h2>
+        <p><strong>Ad Soyad:</strong> ${name}</p>
+        <p><strong>E-posta:</strong> ${email}</p>
+        <p><strong>Telefon:</strong> ${phone || "-"}</p>
+        <p><strong>Mesaj:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Contact form error:", error);
+
+    return NextResponse.json(
+      { success: false, error: "Mail gönderilemedi." },
+      { status: 500 }
+    );
   }
 }

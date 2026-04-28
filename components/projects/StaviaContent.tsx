@@ -20,88 +20,96 @@ export default function StaviaContent() {
 
         <div className="absolute inset-0 z-10">
           <div className="mx-auto flex min-h-[88vh] max-w-6xl items-center px-6">
-            <Reveal className="max-w-3xl">
-              <Link
-                href="/projects"
-                className="text-sm text-[var(--muted)] hover:text-[var(--accent)]"
-              >
-                {t.hero.back}
-              </Link>
+            <div className="max-w-3xl">
+              <Link href="/projects">{t.hero.back}</Link>
 
-              <div className="mt-6 rounded-full border border-[rgba(19,41,75,0.1)] bg-white/60 px-4 py-2 text-xs text-[var(--accent)] backdrop-blur-md">
-                {t.hero.eyebrow}
-              </div>
-
-              <h1 className="mt-6 text-4xl font-semibold text-[var(--accent)] md:text-6xl">
+              <h1 className="mt-6 text-4xl font-semibold">
                 {t.hero.title1}
                 <span className="block">{t.hero.title2}</span>
               </h1>
 
-              <p className="mt-5 text-[var(--muted)] md:text-lg">
-                {t.hero.description}
-              </p>
+              <p className="mt-4">{t.hero.description}</p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {t.hero.badges.map((badge) => (
-                  <Badge key={badge}>{badge}</Badge>
+              <div className="mt-4 flex gap-2">
+                {t.hero.badges.map((b: string) => (
+                  <Badge key={b}>{b}</Badge>
                 ))}
               </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="/contact">{t.hero.cta1}</Button>
-
-                <Button href="/projects/battai-ai-bms" variant="secondary">
-                  {t.hero.cta2}
-                </Button>
-              </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>
 
-      <main className="mx-auto max-w-6xl space-y-24 px-6 py-20">
-        <section className="grid gap-4 md:grid-cols-4">
-          {t.quickCards.map((card, index) => (
-            <Reveal key={card} delay={index * 0.06}>
-              <div className="rounded-2xl border border-[rgba(19,41,75,0.08)] bg-white/60 p-5 backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:bg-white/80 hover:shadow-[0_18px_50px_rgba(15,23,42,0.10)]">
-                <div className="font-semibold text-[var(--accent)]">{card}</div>
-              </div>
-            </Reveal>
+      <main className="mx-auto max-w-6xl space-y-20 px-6 py-20">
+
+        {/* Cards */}
+        <section className="grid md:grid-cols-4 gap-4">
+          {t.quickCards.map((c: any, i: number) => (
+            <div key={i} className="border p-4 rounded-xl">
+              <h3 className="font-semibold">{c.title}</h3>
+              <p className="text-sm mt-2">{c.text}</p>
+            </div>
           ))}
         </section>
 
-        <Reveal>
-          <section className="grid items-center gap-8 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--accent)]">
-                {t.modular.title}
-              </h2>
-              <p className="mt-4 text-[var(--muted)]">
-                {t.modular.text}
-              </p>
-            </div>
+        {/* System */}
+        <section className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-3xl font-semibold">{t.system.title}</h2>
+            <p className="mt-4 whitespace-pre-line">{t.system.text}</p>
+          </div>
+          <Image src="/projects/stavia-bir.png" alt="" width={1200} height={800} />
+        </section>
 
-            <Image
-              src="/projects/stavia-structure.png"
-              alt={t.modular.imageAlt}
-              width={1200}
-              height={900}
-              className="rounded-2xl"
-            />
-          </section>
-        </Reveal>
+        {/* Energy */}
+        <section className="grid md:grid-cols-2 gap-8">
+          <Image src="/projects/stavia-iki.png" alt="" width={1200} height={800} />
+          <div>
+            <h2 className="text-3xl font-semibold">{t.energy.title}</h2>
+            <p className="mt-4 whitespace-pre-line">{t.energy.text}</p>
+          </div>
+        </section>
 
-        <Reveal>
-          <section className="rounded-2xl border border-[rgba(19,41,75,0.08)] bg-white/60 p-8 backdrop-blur-xl">
-            <h2 className="text-3xl font-semibold text-[var(--accent)]">
-              {t.cta.title}
-            </h2>
+        {/* Features */}
+        <section>
+          <h2 className="text-3xl font-semibold">{t.features.title}</h2>
+          <div className="grid md:grid-cols-3 gap-4 mt-6">
+            {t.features.items.map((f: any, i: number) => (
+              <div key={i} className="border p-4 rounded-xl">
+                <h3 className="font-semibold">{f.title}</h3>
+                <p className="text-sm mt-2">{f.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            <div className="mt-6 flex gap-3">
-              <Button href="/contact">{t.cta.button}</Button>
-            </div>
-          </section>
-        </Reveal>
+        {/* Battai */}
+        <section className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-3xl font-semibold">{t.battai.title}</h2>
+            <p className="mt-4 whitespace-pre-line">{t.battai.text}</p>
+          </div>
+          <Image src="/projects/stavia-uc.png" alt="" width={1200} height={800} />
+        </section>
+
+        {/* Vision */}
+        <section className="grid md:grid-cols-2 gap-8">
+          <Image src="/projects/stavia-dord.png" alt="" width={1200} height={800} />
+          <div>
+            <h2 className="text-3xl font-semibold">{t.vision.title}</h2>
+            <p className="mt-4 whitespace-pre-line">{t.vision.text}</p>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="border p-8 rounded-xl">
+          <h2 className="text-3xl font-semibold">{t.cta.title}</h2>
+          <p className="mt-4">{t.cta.text}</p>
+          <Button href="/contact" className="mt-4">
+            {t.cta.button}
+          </Button>
+        </section>
+
       </main>
     </>
   );

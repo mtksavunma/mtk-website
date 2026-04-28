@@ -1,70 +1,87 @@
-import type { Language } from "@/components/providers/LanguageProvider";
-
-export function getStaviaMessages(lang: Language) {
-  if (lang === "en") {
-    return {
-      hero: {
-        back: "← Back to Projects",
-        eyebrow: "Renewable Energy · Portable Platform",
-        title1: "STAVIA",
-        title2: "Portable Smart Energy Platform",
-        description:
-          "STAVIA is a modular energy platform built on BATTAI infrastructure for portable energy storage, smart charging management, and renewable system integration.",
-        badges: ["BATTAI", "Portable", "Smart Charging"],
-        cta1: "Request a Meeting",
-        cta2: "BATTAI Details",
-      },
-
-      quickCards: [
-        "Portable System",
-        "BATTAI Infrastructure",
-        "Renewable Compatibility",
-        "Modular Structure",
-      ],
-
-      modular: {
-        title: "Modular Structure",
-        text:
-          "STAVIA is a portable energy platform that can scale according to different scenarios.",
-        imageAlt: "STAVIA modular structure visual",
-      },
-
-      cta: {
-        title: "Energy Everywhere with STAVIA",
-        button: "Contact Us",
-      },
-    };
-  }
-
+export function getStaviaMessages(lang: string) {
   return {
     hero: {
-      back: "← Projelere dön",
-      eyebrow: "Yenilenebilir Enerji · Taşınabilir Platform",
-      title1: "STAVIA",
-      title2: "Taşınabilir Akıllı Enerji Platformu",
+      back: "← Projelere Dön",
+      eyebrow: "STAVIA",
+      title1: "Yenilenebilir Enerji İçin",
+      title2: "Akıllı Batarya Sistemi",
       description:
-        "STAVIA, BATTAI altyapısını kullanan; taşınabilir enerji depolama, akıllı şarj yönetimi ve yenilenebilir sistem entegrasyonu için geliştirilmiş modüler bir enerji platformudur.",
-      badges: ["BATTAI", "Taşınabilir", "Akıllı Şarj"],
-      cta1: "Görüşme Talep Et",
-      cta2: "BATTAI Detayı",
+        "STAVIA, yenilenebilir enerji sistemlerinde dalgalı üretimi dengeleyen yapay zekâ destekli hibrit batarya platformudur.",
+      badges: [
+        "AI BMS",
+        "Hibrit Batarya",
+        "Enerji Depolama",
+        "Şebeke Uyumu",
+      ],
+      cta1: "İletişime Geç",
+      cta2: "BATTAI İncele",
     },
 
     quickCards: [
-      "Taşınabilir Sistem",
-      "BATTAI Altyapı",
-      "Yenilenebilir Uyum",
-      "Modüler Yapı",
+      {
+        title: "Kesintisiz Enerji",
+        text: "Dalgalı üretimi dengeler.",
+      },
+      {
+        title: "Akıllı Depolama",
+        text: "Fazla enerjiyi depolar.",
+      },
+      {
+        title: "Hibrit Sistem",
+        text: "Farklı bataryaları birlikte yönetir.",
+      },
+      {
+        title: "Şebeke Uyumu",
+        text: "Enerjiyi sisteme sağlıklı aktarır.",
+      },
     ],
 
-    modular: {
-      title: "Modüler Yapı",
+    system: {
+      title: "STAVIA Nedir?",
       text:
-        "STAVIA farklı senaryolara göre ölçeklenebilen taşınabilir bir enerji platformudur.",
-      imageAlt: "STAVIA modüler yapı görseli",
+        "STAVIA, güneş ve rüzgâr gibi kaynaklardan gelen değişken enerjiyi yönetmek için geliştirilmiş akıllı depolama sistemidir.",
+    },
+
+    energy: {
+      title: "Dalgalı Üretime Çözüm",
+      text:
+        "Enerji üretimindeki değişimleri analiz ederek sistemde denge sağlar ve enerji sürekliliğini artırır.",
+    },
+
+    features: {
+      title: "Temel Özellikler",
+      items: [
+        {
+          title: "Yapay Zekâ",
+          text: "Veriye dayalı karar mekanizması",
+        },
+        {
+          title: "Hibrit Batarya",
+          text: "Farklı kimyalar birlikte çalışır",
+        },
+        {
+          title: "Süreklilik",
+          text: "Kesintisiz enerji sağlar",
+        },
+      ],
+    },
+
+    battai: {
+      title: "BATTAI Entegrasyonu",
+      text:
+        "STAVIA, BATTAI BMS altyapısı ile batarya yönetimini optimize eder.",
+    },
+
+    vision: {
+      title: "Gelecek Vizyonu",
+      text:
+        "STAVIA, mikro şebekeler ve enerji sistemleri için ölçeklenebilir bir platformdur.",
     },
 
     cta: {
-      title: "STAVIA ile Enerji Her Yerde",
+      title: "Enerjiyi Daha Akıllı Yönetin",
+      text:
+        "Detaylı bilgi için bizimle iletişime geçin.",
       button: "İletişime Geç",
     },
   };

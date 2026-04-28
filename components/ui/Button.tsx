@@ -1,18 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
 type Props = {
   children: React.ReactNode;
   href?: string;
   variant?: "primary" | "secondary";
   className?: string;
-};
+} & ButtonHTMLAttributes<HTMLButtonElement>; // 🔥 KRİTİK EKLEME
 
 export default function Button({
   children,
   href,
   variant = "primary",
   className = "",
+  ...props // 🔥 propsları alıyoruz
 }: Props) {
   const base =
     "inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300";
@@ -35,5 +38,9 @@ export default function Button({
     );
   }
 
-  return <button className={combined}>{children}</button>;
+  return (
+    <button className={combined} {...props}>
+      {children}
+    </button>
+  );
 }

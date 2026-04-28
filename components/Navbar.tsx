@@ -84,7 +84,7 @@ export default function Navbar() {
             priority
             className={[
               "w-auto shrink-0 brightness-0 transition-all duration-300",
-              navScrolled ? "h-11 md:h-12" : "h-14 md:h-16",
+              navScrolled ? "h-16 md:h-18" : "h-24 md:h-28",
             ].join(" ")}
           />
           <span className="sr-only">MTK Savunma</span>

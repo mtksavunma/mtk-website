@@ -30,21 +30,16 @@ export default function News({ showHeading = true }: Props) {
   }, [t.items, showHeading]);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-18 md:py-24">
+    <section className="mx-auto max-w-6xl px-6 pt-0 pb-6 md:pt-0 md:pb-8">
       <Reveal>
-        <div className="mb-8 flex items-end justify-between gap-6 md:mb-10">
-          <div>
-            {showHeading && (
-              <h2 className="text-3xl font-semibold text-[var(--accent)] md:text-4xl">
-                {t.section.title}
-              </h2>
-            )}
-            <p className="mt-3 max-w-2xl text-sm text-[var(--muted)] md:text-base">
-              {t.section.description}
-            </p>
-          </div>
+        <div className="mb-0 flex items-start justify-end gap-6 -mt-8">
+          {showHeading && (
+            <h2 className="mr-auto text-3xl font-semibold text-[var(--accent)] md:text-4xl">
+              {t.section.title}
+            </h2>
+          )}
 
-          <div className="hidden md:block">
+          <div className="hidden md:block -mt-14">
             <Button href="/news" variant="secondary">
               {t.section.allNews}
             </Button>
@@ -52,7 +47,11 @@ export default function News({ showHeading = true }: Props) {
         </div>
       </Reveal>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div
+        className={`grid grid-cols-1 gap-5 md:grid-cols-3 ${
+          showHeading ? "mt-8 md:mt-10" : "mt-0"
+        }`}
+      >
         {items.map((n, index) => (
           <Reveal key={n.slug} delay={index * 0.08}>
             <article className="glass group flex h-full flex-col rounded-2xl border border-[rgba(19,41,75,0.07)] p-6 transition-all duration-500 hover:-translate-y-[4px] hover:border-[rgba(19,41,75,0.12)] hover:bg-white/82 hover:shadow-[0_20px_50px_rgba(15,23,42,0.10)]">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import ParallaxHeroImage from "@/components/ParallaxHeroImage";
 
 export default function BattaiHero() {
   const slides = useMemo(
@@ -19,6 +19,7 @@ export default function BattaiHero() {
     const t = setInterval(() => {
       setIdx((i) => (i + 1) % slides.length);
     }, 3500);
+
     return () => clearInterval(t);
   }, [slides.length]);
 
@@ -31,40 +32,40 @@ export default function BattaiHero() {
       >
         {slides.map((src, i) => (
           <div key={src} className="relative h-full w-full shrink-0">
-            <Image
+            <ParallaxHeroImage
               src={src}
               alt={`BATTAI hero görseli ${i + 1}`}
-              fill
-              sizes="100vw"
-              className="pointer-events-none select-none object-cover object-center blur-[1px] scale-[1.01]"
               priority={i === 0}
+              offset={70}
             />
+
             <div
               className="absolute inset-0"
               aria-hidden
               style={{
                 background: `
                   linear-gradient(to right,
-                    rgba(245,247,251,0.82) 0%,
-                    rgba(245,247,251,0.68) 28%,
-                    rgba(245,247,251,0.34) 52%,
-                    rgba(245,247,251,0.12) 72%,
-                    rgba(245,247,251,0.18) 100%
+                    rgba(245,247,251,0.86) 0%,
+                    rgba(245,247,251,0.72) 30%,
+                    rgba(245,247,251,0.42) 55%,
+                    rgba(245,247,251,0.16) 78%,
+                    rgba(245,247,251,0.20) 100%
                   ),
                   linear-gradient(to bottom,
-                    rgba(255,255,255,0.34) 0%,
-                    rgba(255,255,255,0.10) 48%,
-                    rgba(245,247,251,0.86) 100%
+                    rgba(255,255,255,0.42) 0%,
+                    rgba(255,255,255,0.12) 48%,
+                    rgba(245,247,251,0.88) 100%
                   )
                 `,
               }}
             />
+
             <div
               className="absolute inset-0 opacity-70"
               aria-hidden
               style={{
                 background:
-                  "radial-gradient(circle at 20% 22%, rgba(255,255,255,0.42), transparent 24%), radial-gradient(circle at 80% 18%, rgba(245,158,11,0.08), transparent 20%), radial-gradient(circle at 62% 74%, rgba(19,41,75,0.06), transparent 24%)",
+                  "radial-gradient(circle at 18% 20%, rgba(255,255,255,0.45), transparent 24%), radial-gradient(circle at 78% 18%, rgba(245,158,11,0.08), transparent 20%), radial-gradient(circle at 60% 72%, rgba(19,41,75,0.06), transparent 24%)",
               }}
             />
           </div>
@@ -83,6 +84,7 @@ export default function BattaiHero() {
       <div className="pointer-events-auto absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {slides.map((_, i) => {
           const active = i === idx;
+
           return (
             <button
               key={i}

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Badge from "@/components/Badge";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/ui/Button";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -15,34 +14,55 @@ export default function StaviaContent() {
 
   return (
     <>
+      {/* HERO */}
       <div className="relative">
         <StaviaHero />
 
         <div className="absolute inset-0 z-10">
-          <div className="mx-auto flex min-h-[88vh] max-w-6xl items-center px-6">
-            <div className="max-w-3xl">
-              <Link href="/projects">{t.hero.back}</Link>
+          <div className="mx-auto flex min-h-[88vh] max-w-6xl items-center justify-center px-6">
+            
+            {/* SOL ÜST BACK */}
+            <Link
+              href="/projects"
+              className="absolute left-6 top-28 text-sm text-[var(--muted)] hover:text-[var(--accent)] hover:underline md:left-10"
+            >
+              {t.hero.back}
+            </Link>
 
-              <h1 className="mt-6 text-4xl font-semibold">
+            <Reveal className="mx-auto max-w-3xl text-center -translate-y-10 md:-translate-y-16">
+              
+              {/* 🔥 BÜYÜK BAŞLIK */}
+              <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--accent)]">
                 {t.hero.title1}
                 <span className="block">{t.hero.title2}</span>
               </h1>
 
-              <p className="mt-4">{t.hero.description}</p>
-
-              <div className="mt-4 flex gap-2">
-                {t.hero.badges.map((b: string) => (
-                  <Badge key={b}>{b}</Badge>
-                ))}
+              {/* BUTON */}
+              <div className="mt-8 flex justify-center">
+                <Button href="/contact">
+                  {t.cta.button}
+                </Button>
               </div>
-            </div>
+
+            </Reveal>
           </div>
         </div>
       </div>
 
-      <main className="mx-auto max-w-6xl space-y-20 px-6 py-20">
+      {/* CONTENT */}
+      <main className="mx-auto max-w-6xl space-y-20 px-6 py-16 md:py-20">
 
-        {/* Cards */}
+        {/* 🔥 AÇIKLAMA (AŞAĞI ALINDI) */}
+        <Reveal>
+          <section className="mx-auto max-w-5xl -mt-10 md:-mt-12">
+            <p className="text-justify text-base leading-8 text-[var(--muted)] md:text-lg md:leading-9">
+              <strong className="text-[var(--accent)]">STAVIA</strong>{" "}
+              {t.hero.description.replace(/^STAVIA[;:\s-]*/i, "")}
+            </p>
+          </section>
+        </Reveal>
+
+        {/* CARDS */}
         <section className="grid md:grid-cols-4 gap-4">
           {t.quickCards.map((c: any, i: number) => (
             <div key={i} className="border p-4 rounded-xl">
@@ -52,7 +72,7 @@ export default function StaviaContent() {
           ))}
         </section>
 
-        {/* System */}
+        {/* SYSTEM */}
         <section className="grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-3xl font-semibold">{t.system.title}</h2>
@@ -61,7 +81,7 @@ export default function StaviaContent() {
           <Image src="/projects/stavia-bir.png" alt="" width={1200} height={800} />
         </section>
 
-        {/* Energy */}
+        {/* ENERGY */}
         <section className="grid md:grid-cols-2 gap-8">
           <Image src="/projects/stavia-iki.png" alt="" width={1200} height={800} />
           <div>
@@ -70,7 +90,7 @@ export default function StaviaContent() {
           </div>
         </section>
 
-        {/* Features */}
+        {/* FEATURES */}
         <section>
           <h2 className="text-3xl font-semibold">{t.features.title}</h2>
           <div className="grid md:grid-cols-3 gap-4 mt-6">
@@ -83,7 +103,7 @@ export default function StaviaContent() {
           </div>
         </section>
 
-        {/* Battai */}
+        {/* BATTAI */}
         <section className="grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-3xl font-semibold">{t.battai.title}</h2>
@@ -92,7 +112,7 @@ export default function StaviaContent() {
           <Image src="/projects/stavia-uc.png" alt="" width={1200} height={800} />
         </section>
 
-        {/* Vision */}
+        {/* VISION */}
         <section className="grid md:grid-cols-2 gap-8">
           <Image src="/projects/stavia-dord.png" alt="" width={1200} height={800} />
           <div>

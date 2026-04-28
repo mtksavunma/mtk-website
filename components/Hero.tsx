@@ -25,16 +25,16 @@ export default function Hero() {
         style={{
           background: `
             linear-gradient(to right,
-              rgba(245,247,251,0.82) 0%,
-              rgba(245,247,251,0.68) 28%,
-              rgba(245,247,251,0.34) 52%,
-              rgba(245,247,251,0.12) 72%,
-              rgba(245,247,251,0.18) 100%
+              rgba(245,247,251,0.86) 0%,
+              rgba(245,247,251,0.72) 30%,
+              rgba(245,247,251,0.42) 55%,
+              rgba(245,247,251,0.16) 78%,
+              rgba(245,247,251,0.20) 100%
             ),
             linear-gradient(to bottom,
-              rgba(255,255,255,0.36) 0%,
-              rgba(255,255,255,0.10) 48%,
-              rgba(245,247,251,0.85) 100%
+              rgba(255,255,255,0.42) 0%,
+              rgba(255,255,255,0.12) 48%,
+              rgba(245,247,251,0.88) 100%
             )
           `,
         }}
@@ -58,29 +58,25 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen items-center">
+      <div className="relative z-10 flex min-h-screen items-center justify-center pt-10 md:pt-0">
         <div className="mx-auto w-full max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl"
+            className="mx-auto max-w-3xl -translate-y-10 text-center md:-translate-y-16"
           >
-            <div className="mb-5 inline-flex items-center rounded-full border border-[rgba(19,41,75,0.10)] bg-[rgba(255,255,255,0.58)] px-4 py-2 text-xs text-[var(--accent)] backdrop-blur-md md:text-sm">
-              {t.hero.eyebrow}
-            </div>
-
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[var(--accent)] md:text-6xl">
+            <h1 className="text-center text-4xl font-semibold leading-tight tracking-tight text-[var(--accent)] md:text-6xl">
               {t.hero.title1}
               <span className="block">{t.hero.title2}</span>
               <span className="block">{t.hero.title3}</span>
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-xl md:leading-8">
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-7 text-[var(--muted)] md:text-xl md:leading-8">
               {t.hero.description}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
               {t.hero.pills.map((item) => (
                 <span
                   key={item}
@@ -91,7 +87,7 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button href="/projects">{t.hero.primaryCta}</Button>
               <Button href="/contact" variant="secondary">
                 {t.hero.secondaryCta}

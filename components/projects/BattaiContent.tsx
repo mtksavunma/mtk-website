@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Badge from "@/components/Badge";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/ui/Button";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -22,35 +21,21 @@ export default function BattaiContent() {
         <BattaiHero />
 
         <div className="absolute inset-0 z-10">
-          <div className="mx-auto flex min-h-[88vh] max-w-6xl items-center px-6">
-            <Reveal className="max-w-3xl">
-              <Link
-                href="/projects"
-                className="inline-flex text-sm text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
-              >
-                {t.hero.back}
-              </Link>
+          <div className="mx-auto flex min-h-[88vh] max-w-6xl items-center justify-center px-6">
+            <Link
+              href="/projects"
+              className="absolute left-6 top-28 text-sm text-[var(--muted)] hover:text-[var(--accent)] hover:underline md:left-10"
+            >
+              {t.hero.back}
+            </Link>
 
-              <div className="mt-6 inline-flex items-center rounded-full border border-[rgba(19,41,75,0.10)] bg-white/60 px-4 py-2 text-xs text-[var(--accent)] backdrop-blur-md md:text-sm">
-                {t.hero.eyebrow}
-              </div>
-
-              <h1 className="mt-6 text-4xl font-semibold leading-tight text-[var(--accent)] md:text-6xl">
+            <Reveal className="mx-auto max-w-3xl -translate-y-8 text-center md:-translate-y-14">
+              <h1 className="text-center text-4xl font-semibold leading-tight text-[var(--accent)] md:text-6xl">
                 {t.hero.title1}
                 <span className="block">{t.hero.title2}</span>
               </h1>
 
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-xl md:leading-8">
-                {t.hero.description}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {t.hero.badges.map((badge) => (
-                  <Badge key={badge}>{badge}</Badge>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a
                   href="/downloads/battai-brosur.pdf"
                   download
@@ -81,6 +66,17 @@ export default function BattaiContent() {
             </Reveal>
           ))}
         </section>
+
+        <Reveal>
+          <section className="mx-auto -mt-10 max-w-5xl md:-mt-12">
+            <p className="text-justify text-base leading-8 text-[var(--muted)] md:text-lg md:leading-9">
+              <strong className="font-semibold text-[var(--accent)]">
+                BATTAI
+              </strong>{" "}
+              {t.hero.description.replace(/^BATTAI[;:\s-]*/i, "")}
+            </p>
+          </section>
+        </Reveal>
 
         <Reveal>
           <section className="grid gap-8 md:grid-cols-2 md:items-center">

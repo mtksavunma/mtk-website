@@ -31,16 +31,12 @@ export default function ProjectsPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <Reveal>
-        <section className="max-w-3xl">
-          <div className="inline-flex items-center rounded-full border border-[rgba(19,41,75,0.10)] bg-white/60 px-4 py-2 text-xs text-[var(--accent)] backdrop-blur-md md:text-sm">
-            {t.eyebrow}
-          </div>
-
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[var(--accent)] md:text-5xl">
+        <section className="mx-auto max-w-3xl text-center">
+          <h1 className="text-4xl font-semibold tracking-tight text-[var(--accent)] md:text-5xl">
             {t.title}
           </h1>
 
-          <p className="mt-5 text-base leading-7 text-[var(--muted)] md:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">
             {t.intro}
           </p>
         </section>
@@ -48,7 +44,7 @@ export default function ProjectsPage() {
 
       <Reveal delay={0.06}>
         <section className="mt-10">
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {CATS.map((c) => {
               const activeClass =
                 active === c

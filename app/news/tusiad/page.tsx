@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 
 export default function TusiadPage() {
   const images = [
-    "/News/tusiad-1.jpg",
-    "/News/tusiad-2.jpg",
-    "/News/tusiad-3.jpg",
-    "/News/tusiad-4.jpg",
+    "/News/tusiad-1.jpeg",
+    "/News/tusiad-2.jpeg",
+    "/News/tusiad-3.jpeg",
+    "/News/tusiad-4.jpeg",
   ];
 
   const [index, setIndex] = useState(0);

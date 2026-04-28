@@ -56,22 +56,18 @@ export default function ContactContent() {
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      {/* HEADER */}
       <Reveal>
-        <section className="max-w-3xl">
-          <div className="inline-flex items-center rounded-full border border-[rgba(19,41,75,0.10)] bg-white/60 px-4 py-2 text-xs text-[var(--accent)] backdrop-blur-md md:text-sm">
-            {t.eyebrow}
-          </div>
-
-          <h1 className="mt-5 text-4xl font-semibold text-[var(--accent)] md:text-5xl">
+        <section className="mx-auto max-w-3xl text-center">
+          <h1 className="text-4xl font-semibold text-[var(--accent)] md:text-5xl">
             {t.title}
           </h1>
 
-          <p className="mt-5 text-[var(--muted)] md:text-lg">{t.intro}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-[var(--muted)] md:text-lg">
+            {t.intro}
+          </p>
         </section>
       </Reveal>
 
-      {/* OFİSLER */}
       <Reveal>
         <section className="mt-12">
           <h2 className="text-2xl font-semibold text-[var(--accent)] md:text-3xl">
@@ -108,7 +104,6 @@ export default function ContactContent() {
         </section>
       </Reveal>
 
-      {/* CONTACT + FORM */}
       <section className="mt-12 grid gap-6 md:grid-cols-2">
         <Reveal>
           <div className={`${cardClass} p-6`}>
@@ -145,12 +140,7 @@ export default function ContactContent() {
               {t.formTitle}
             </h2>
 
-            <input
-              name="name"
-              placeholder={t.name}
-              className="input"
-              required
-            />
+            <input name="name" placeholder={t.name} className="input" required />
 
             <input
               name="email"
@@ -171,11 +161,7 @@ export default function ContactContent() {
               {loading ? "Gönderiliyor..." : t.submit}
             </Button>
 
-            {status && (
-              <p className="text-sm text-[var(--muted)]">
-                {status}
-              </p>
-            )}
+            {status && <p className="text-sm text-[var(--muted)]">{status}</p>}
           </form>
         </Reveal>
       </section>
